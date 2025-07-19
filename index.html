@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wasanly – Find Your Way. Anywhere in Egypt.</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Removed Google Maps API script -->
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0 flex items-center">
+                        <i class="fas fa-bus text-2xl text-green-600 mr-2"></i>
+                        <span class="text-xl font-bold text-gray-800">Wasanly</span>
+                    </div>
+                </div>
+                <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
+                    <a href="#home" class="text-gray-900 hover:text-green-600 px-3 py-2 text-sm font-medium">Home</a>
+                    <a href="#how-it-works" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium">How it works</a>
+                    <a href="#cities" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium">Cities</a>
+                    <a href="#transportation" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium">Transportation</a>
+                </div>
+                <div class="-mr-2 flex items-center md:hidden">
+                    <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile menu -->
+        <div class="hidden md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#home" class="bg-green-100 text-green-600 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+                <a href="#how-it-works" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">How it works</a>
+                <a href="#cities" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Cities</a>
+                <a href="#transportation" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium">Transportation</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg text-white py-20 md:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 animate-pulse">Lost in a New City? We Got You.</h1>
+                <p class="text-xl md:text-2xl mb-8">Know the best way to move — with microbuses, metros, and more, all in one click.</p>
+                
+                <!-- Search Box -->
+                <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden">
+                    <div class="flex flex-col md:flex-row">
+                        <div class="flex-1 p-4">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-map-marker-alt text-gray-400"></i>
+                                </div>
+                                <input type="text" id="current-location" class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-900" placeholder="Current location">
+                                <button id="locate-me" class="absolute right-2 top-2 p-1 text-gray-500 hover:text-green-600">
+                                    <i class="fas fa-location-arrow"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="flex-1 p-4 border-t md:border-t-0 md:border-l border-gray-200">
+                            <div class="relative">
+                                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                    <i class="fas fa-flag text-gray-400"></i>
+                                </div>
+                                <input type="text" id="destination" class="block w-full pl-10 pr-3 py-3 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 sm:text-sm text-gray-900" placeholder="Destination">
+                            </div>
+                        </div>
+                        <div class="p-4 bg-green-600 flex items-center justify-center cursor-pointer hover:bg-green-700 transition duration-150" id="find-route-btn">
+                            <i class="fas fa-search mr-2"></i>
+                            <span>Find My Route</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                    <button id="plan-journey-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center">
+                        <i class="fas fa-search mr-2"></i> Plan Your Journey
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">How Wasanly Works</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Getting around Egypt has never been easier</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mb-4">
+                        <i class="fas fa-map-marked-alt text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">1. Enter Your Route</h3>
+                    <p class="text-gray-500">Tell us where you're starting and where you need to go.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mb-4">
+                        <i class="fas fa-route text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">2. Get Smart Options</h3>
+                    <p class="text-gray-500">We show you all possible routes with time, cost, and comfort ratings.</p>
+                </div>
+                
+                <div class="bg-gray-50 p-6 rounded-lg shadow-sm text-center">
+                    <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-md bg-green-100 text-green-600 mb-4">
+                        <i class="fas fa-bus text-xl"></i>
+                    </div>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">3. Ride With Confidence</h3>
+                    <p class="text-gray-500">Follow turn-by-turn directions and real-time updates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Route Finder Demo -->
+    <section id="demo" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="lg:grid lg:grid-cols-12 lg:gap-8">
+                <div class="lg:col-span-5">
+                    <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Smart Route Finder</h2>
+                    <p class="mt-3 text-lg text-gray-500">We analyze all available transportation options to find you the best route based on your priorities.</p>
+                    
+                    <div class="mt-8 space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-md p-2">
+                                <i class="fas fa-bolt text-green-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-medium text-gray-900">Fastest Route</h4>
+                                <p class="mt-1 text-gray-500">Get to your destination as quickly as possible.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-md p-2">
+                                <i class="fas fa-coins text-green-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-medium text-gray-900">Cheapest Option</h4>
+                                <p class="mt-1 text-gray-500">Save money with the most economical choices.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 bg-green-100 rounded-md p-2">
+                                <i class="fas fa-exchange-alt text-green-600"></i>
+                            </div>
+                            <div class="ml-3">
+                                <h4 class="text-lg font-medium text-gray-900">Fewest Transfers</h4>
+                                <p class="mt-1 text-gray-500">Minimize switches between vehicles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 lg:mt-0 lg:col-span-7">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+                        <div class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-lg font-medium text-gray-900">Route Options</h3>
+                                <div class="relative inline-block text-left">
+                                    <div>
+                                        <button type="button" class="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500" id="sort-options">
+                                            Sort by: Fastest
+                                            <i class="fas fa-chevron-down ml-2"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="space-y-4" id="route-options">
+                                <!-- Route options will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Map -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Interactive Map</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Visualize your route with pickup and dropoff points</p>
+            </div>
+            <div class="bg-gray-100 rounded-xl overflow-hidden shadow-lg">
+                <div class="p-4 bg-white border-b flex items-center justify-between">
+                    <div>
+                        <span class="inline-block h-3 w-3 rounded-full bg-green-500 mr-2"></span>
+                        <span class="font-medium" id="start-location">Enter start location</span>
+                    </div>
+                    <i class="fas fa-arrow-right text-gray-400 mx-2"></i>
+                    <div>
+                        <span class="inline-block h-3 w-3 rounded-full bg-red-500 mr-2"></span>
+                        <span class="font-medium" id="end-location">Enter destination</span>
+                    </div>
+                </div>
+                <div id="map" class="h-96 flex items-center justify-center relative map-placeholder">
+                    <!-- Static Egypt map illustration -->
+                    <div class="absolute inset-0 flex items-center justify-center">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Egypt_location_map.svg/600px-Egypt_location_map.svg.png" alt="Egypt Map" class="opacity-40 max-h-full max-w-full" />
+                    </div>
+                    <div class="relative z-10 text-center p-6 bg-white bg-opacity-90 rounded-lg shadow-md">
+                        <h3 class="text-lg font-medium text-gray-900 mb-2">Interactive Map</h3>
+                        <p class="text-gray-600 mb-4">Enter your route to see the map preview</p>
+                        <button id="view-map-btn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg">
+                            View Full Map
+                        </button>
+                    </div>
+                    <!-- Simulated route markers -->
+                    <div id="simulated-route-markers"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transportation Options -->
+    <section id="transportation" class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Transportation Options</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">All the ways to get around Egypt</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="transportation-grid">
+                <!-- Transportation options will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- City Guides -->
+    <section id="cities" class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Egyptian Cities</h2>
+                <p class="mt-4 max-w-2xl text-xl text-gray-500 mx-auto">Navigate through Egypt's major cities and areas</p>
+            </div>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cities-grid">
+                <!-- Cities will be populated by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="bg-green-700">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+            <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+                <span class="block">Ready to navigate Egypt?</span>
+                <span class="block text-green-200">Download Wasalny today.</span>
+            </h2>
+            <div class="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+                <div class="inline-flex rounded-md shadow">
+                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-green-600 bg-white hover:bg-green-50">
+                        <i class="fab fa-apple mr-2"></i> App Store
+                    </a>
+                </div>
+                <div class="ml-3 inline-flex rounded-md shadow">
+                    <a href="#" class="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-green-600 hover:bg-green-700">
+                        <i class="fab fa-google-play mr-2"></i> Google Play
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800">
+        <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <div class="flex items-center">
+                        <i class="fas fa-bus text-2xl text-green-400 mr-2"></i>
+                        <span class="text-xl font-bold text-white">Wasalny</span>
+                    </div>
+                    <p class="mt-4 text-gray-300">Know the road before you go. Navigating Egypt's transportation made simple.</p>
+                    <div class="mt-4 flex space-x-6">
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Company</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">About</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Careers</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+                    <ul class="mt-4 space-y-4">
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Terms</a></li>
+                        <li><a href="#" class="text-base text-gray-300 hover:text-white">Cookie Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <p class="text-base text-gray-400 text-center">
+                    &copy; 2025 Wasalny. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

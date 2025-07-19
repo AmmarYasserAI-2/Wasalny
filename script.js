@@ -43,7 +43,6 @@ const transportationOptions = [
     { name_en: "Metro Line 3", name_ar: "الخط الثالث للمترو", category: "Metro", description: "From Airport (in future) to Imbaba. Covers Heliopolis, Abbasia." },
     { name_en: "Microbus", name_ar: "ميكروباص", category: "Bus", description: "Shared small van, informal but fixed routes. Cheap and fast." },
     { name_en: "CTA Public Bus", name_ar: "أتوبيس عام", category: "Bus", description: "Govt. buses with cheap fares and fixed routes." },
-    { name_ar: "أتوبيس مكيف", category: "Bus", description: "More comfortable gov. buses, slightly higher price." },
     { name_en: "Private Bus", name_ar: "أتوبيس خاص", category: "Bus", description: "Privately owned buses with varying quality and prices." },
     { name_en: "Swvl", name_ar: "سويفل", category: "Cars", description: "App-based bus/car service with fixed routes. Good comfort." },
     { name_en: "Taxi", name_ar: "تاكسي", category: "Cars", description: "Official city taxis with meters (but often not used)." },
@@ -195,7 +194,7 @@ const sampleRoutes = [
         type: "fastest"
     },
     {
-        name: "Public Bus 400",
+        name: "Public Bus #400",
         icon: "fas fa-bus",
         color: "blue",
         time: "55 min",
@@ -203,16 +202,6 @@ const sampleRoutes = [
         transfers: "Direct",
         description: "Bus 400 from Ramses to Dokki",
         type: "cheapest"
-    },
-    {
-        name: "Metro Line 2",
-        icon: "fas fa-subway",
-        color: "green",
-        time: "35 min",
-        cost: "10 EGP",
-        transfers: "Direct",
-        description: "Metro Line 2 from Shubra El-Kheima to Giza",
-        type: "fastest"
     },
     {
         name: "Microbus Only",
@@ -223,36 +212,6 @@ const sampleRoutes = [
         transfers: "Direct",
         description: "Microbus route 355 from Ramses to Giza",
         type: "fewest"
-    },
-    {
-        name: "Swvl Shuttle",
-        icon: "fas fa-bus",
-        color: "indigo",
-        time: "45 min",
-        cost: "20 EGP",
-        transfers: "Direct",
-        description: "Swvl shuttle from Heliopolis to Maadi",
-        type: "comfort"
-    },
-    {
-        name: "CTA Air-Conditioned Bus",
-        icon: "fas fa-bus",
-        color: "blue",
-        time: "60 min",
-        cost: "10 EGP",
-        transfers: "Direct",
-        description: "CTA air-conditioned bus from Nasr City to Downtown Cairo",
-        type: "comfort"
-    },
-    {
-        name: "Tram (Alexandria)",
-        icon: "fas fa-tram",
-        color: "yellow",
-        time: "70 min",
-        cost: "3 EGP",
-        transfers: "Direct",
-        description: "Alexandria tram from Raml Station to San Stefano",
-        type: "cheapest"
     }
 ];
 

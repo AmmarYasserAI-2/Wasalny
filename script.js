@@ -57,7 +57,50 @@ let currentLocation = null;
 // Initialize the application
 document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
-    populateCities();
+    // Ensure Suburb is the default filter for cities
+
+    const cityFilterBtns = document.querySelectorAll('.city-filter-btn');
+    const citiesGrid = document.getElementById('cities-grid');
+
+    function renderCities(category) {
+        citiesGrid.innerHTML = '';
+        const filteredCities = category === 'all'
+            ? cities
+            : cities.filter(city => city.category === category);
+
+        filteredCities.forEach(city => {
+            const cityElement = document.createElement('div');
+            cityElement.className = 'city-card bg-white overflow-hidden shadow rounded-lg transition duration-300 p-4';
+            cityElement.innerHTML = `
+                <div class="flex items-center justify-between mb-2">
+                    <h3 class="text-lg font-medium text-gray-900">${city.name_en}</h3>
+                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">${city.category}</span>
+                </div>
+                <p class="text-gray-500 mb-2">${city.name_ar}</p>
+                <p class="text-gray-500 mb-2">Navigate ${city.name_en} with our comprehensive transportation guide.</p>
+            `;
+            citiesGrid.appendChild(cityElement);
+        });
+    }
+
+    // Set Suburb as default
+    cityFilterBtns.forEach(btn => {
+        if (btn.dataset.category === 'suburb') {
+            btn.classList.add('bg-green-100', 'text-green-800');
+        } else {
+            btn.classList.remove('bg-green-100', 'text-green-800');
+        }
+    });
+    renderCities('suburb');
+
+    cityFilterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            cityFilterBtns.forEach(b => b.classList.remove('bg-green-100', 'text-green-800'));
+            this.classList.add('bg-green-100', 'text-green-800');
+            renderCities(this.dataset.category);
+        });
+    });
+
     populateTransportation();
     
     // Show sample routes on page load for demonstration

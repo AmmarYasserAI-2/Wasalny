@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <!-- Removed Google Maps API script -->
+    <style>
+        .faq-content.open { padding-top: 1rem; padding-bottom: 1.5rem; }
+    </style>
 </head>
 <body class="font-sans bg-gray-50">
     <!-- Navigation -->
@@ -24,10 +27,9 @@
                 </div>
                 <div class="hidden md:ml-6 md:flex md:items-center md:space-x-8">
                     <a href="#home" class="text-gray-900 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-home mr-1"></i>Home</a>
-                    <a href="#how-it-works" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-info-circle mr-1"></i>How it works</a>
-                    <a href="#cities" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-city mr-1"></i>Cities</a>
-                    <a href="#transportation" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-bus mr-1"></i>Transportation</a>
-                    <a href="#footer" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-arrow-down mr-1"></i>Footer</a>
+                    <a href="#features" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-star mr-1"></i>Main Features</a>
+                    <a href="#pricing" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-tags mr-1"></i>Pricing</a>
+                    <a href="#faqs" class="text-gray-500 hover:text-green-600 px-3 py-2 text-sm font-medium"><i class="fas fa-question-circle mr-1"></i>FAQ</a>
                 </div>
                 <div class="-mr-2 flex items-center md:hidden">
                     <button type="button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-green-500" aria-controls="mobile-menu" aria-expanded="false" id="mobile-menu-button">
@@ -44,10 +46,9 @@
         <div class="hidden md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
                 <a href="#home" class="bg-green-100 text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-home mr-1"></i>Home</a>
-                <a href="#how-it-works" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-info-circle mr-1"></i>How it works</a>
-                <a href="#cities" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-city mr-1"></i>Cities</a>
-                <a href="#transportation" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-bus mr-1"></i>Transportation</a>
-                <a href="#footer" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-arrow-down mr-1"></i>Footer</a>
+                <a href="#features" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-star mr-1"></i>Main Features</a>
+                <a href="#pricing" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-tags mr-1"></i>Pricing</a>
+                <a href="#faqs" class="text-gray-600 hover:bg-gray-50 hover:text-green-600 block px-3 py-2 rounded-md text-base font-medium"><i class="fas fa-question-circle mr-1"></i>FAQ</a>
             </div>
         </div>
     </nav>
@@ -276,9 +277,19 @@
                 <table class="min-w-full bg-white rounded-lg shadow-lg">
                     <thead>
                         <tr>
-                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Feature</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Google Maps</th>
-                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Our App</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"></th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex flex-col items-center">
+                                    <i class="fab fa-google text-2xl text-blue-500 mb-1"></i>
+                                    Google Maps
+                                </div>
+                            </th>
+                            <th class="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                <div class="flex flex-col items-center">
+                                    <i class="fas fa-bus text-2xl text-green-600 mb-1"></i>
+                                    Wasalny
+                                </div>
+                            </th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-gray-200">
@@ -402,7 +413,7 @@
                 <div id="map" class="h-96 relative">
                     <div style="text-decoration:none; overflow:hidden;max-width:100%;width:100%;height:100%;">
                         <div id="g-mapdisplay" style="height:100%; width:100%;max-width:100%;">
-                            <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=egypt&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
+                            <iframe style="height:100%;width:100%;border:0;" frameborder="0" src="https://www.google.com/maps/embed/v1/place?q=Computer+Qualifying+Center&key=AIzaSyBFw0Qbyq9zTFTd-tUY6dZWTgaQzuU17R8"></iframe>
                         </div>
                         <a class="code-for-google-map" href="https://www.bootstrapskins.com/themes" id="enable-maps-data">premium bootstrap themes</a>
                         <style>#g-mapdisplay img{max-width:none!important;background:none!important;font-size: inherit;font-weight:inherit;}</style>
@@ -442,9 +453,8 @@
             </div>
             <!-- Category Filter -->
             <div class="flex flex-wrap justify-center gap-2 mb-8">
-                <button class="city-filter-btn bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium" data-category="all">All</button>
-                <button class="city-filter-btn bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium" data-category="city">City</button>
                 <button class="city-filter-btn bg-green-100 text-green-800 px-4 py-1 rounded-full text-sm font-medium" data-category="suburb">Suburb</button>
+                <button class="city-filter-btn bg-blue-100 text-blue-800 px-4 py-1 rounded-full text-sm font-medium" data-category="city">City</button>
                 <button class="city-filter-btn bg-purple-100 text-purple-800 px-4 py-1 rounded-full text-sm font-medium" data-category="neighborhood">Neighborhood</button>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="cities-grid">
@@ -600,8 +610,9 @@
                 document.querySelectorAll('.faq-toggle svg').forEach(svg => svg.classList.remove('rotate-180'));
                 // Open this one if it was closed
                 if (!isOpen) {
-                    content.style.maxHeight = content.scrollHeight + 'px';
                     content.classList.add('open');
+                    // Add 40px for padding (1rem top + 1.5rem bottom)
+                    content.style.maxHeight = (content.scrollHeight + 40) + 'px';
                     this.querySelector('svg').classList.add('rotate-180');
                 }
             });

@@ -230,7 +230,7 @@ const sampleRoutes = [
         icon: "fas fa-subway",
         color: "green",
         time: "40 min",
-        cost: "12 EGP",
+        cost: "12",
         transfers: "1 transfer",
         description: "Metro Line 1 from Ramses to Helwan, then Microbus to Maadi",
         recommended: true,
@@ -241,7 +241,7 @@ const sampleRoutes = [
         icon: "fas fa-bus",
         color: "blue",
         time: "55 min",
-        cost: "5 EGP",
+        cost: "5",
         transfers: "Direct",
         description: "Bus 400 from Ramses to Dokki",
         type: "cheapest"
@@ -251,7 +251,7 @@ const sampleRoutes = [
         icon: "fas fa-bus",
         color: "orange",
         time: "50 min",
-        cost: "8 EGP",
+        cost: "8",
         transfers: "Direct",
         description: "Microbus route 355 from Ramses to Giza",
         type: "fewest"

@@ -37,27 +37,6 @@ Wasanly is a comprehensive transportation planning website for Egypt, helping us
 - **Maps**: Google Maps API
 - **Geolocation**: Browser Geolocation API
 
-## Getting Started
-
-1. **Clone the repository**
-   ```bash
-   git clone <repository-url>
-   cd wasanly
-   ```
-
-2. **Set up Google Maps API**
-   - Get a Google Maps API key from [Google Cloud Console](https://console.cloud.google.com/)
-   - Replace `YOUR_GOOGLE_MAPS_API_KEY` in `index.html` with your actual API key
-
-3. **Open the website**
-   - Simply open `index.html` in your web browser
-   - Or serve it using a local server:
-     ```bash
-     python -m http.server 8000
-     # or
-     npx serve .
-     ```
-
 ## Usage
 
 ### Planning a Route
@@ -106,10 +85,6 @@ We welcome contributions to improve Wasanly:
 ## License
 
 © 2025 Wasanly. All rights reserved.
-
-## Contact
-
-For questions, suggestions, or support, please contact us through the website.
 
 ---
 
